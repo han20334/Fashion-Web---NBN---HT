@@ -1,0 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fff;
+    color: #000; /**Màu cho chữ đen toàn trang*/
+    line-height: 1.6;
+}
+
+/* Container - Phần wrapper chung */
+.container { /* của Main products */
+    display: flex; /* Sử dụng flexbox để căn chỉnh khung */
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa trang */
+    padding: 0 20px; /* Padding hai bên */
+}
+
+/* Header - Phần đầu trang với logo, search, cart */
+.header { /*logo, search, cart*/
+    display: flex; 
+    background-color: #fff;
+    border-bottom: 1px solid #eee; /* Viền dưới nhẹ */
+    padding: 10px 0; /* Padding trên dưới */
+}
+
+.header .container { /* logo, search, cart, main products*/
+    display: flex; /* Sử dụng flexbox để căn chỉnh khung */
+    justify-content: space-between;/*!!!*/ /* Khoảng cách giữa các phần tử */
+    align-items: center;/*!!!*/ /* Căn giữa theo chiều dọc */
+}
+
+/*!!!!*/  /*logo bị zoom ra quá rồi*/ /*fix lại phần logo*/
+.logo {
+    text-align: left; /* Căn trái */
+    padding-left: 10px; /* Xóa padding bên trái */
+    align-items: left; /* Căn giữa theo chiều dọc */
+    font-weight: bold; /* In đậm */
+    /*margin-right: 5px;  Khoảng cách bên phải */
+    margin-left: 2px; /* Khoảng cách bên trái*/
+    /*padding-right: 3px; /*tăng padding bên phải*/
+}
+
+.search {
+    flex: 2; /* Phần tìm kiếm chiếm 70% chiều rộng */
+    display: flex; /* Sử dụng flexbox cho phần tìm kiếm */
+    justify-content: center; /* Căn giữa */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+/*khong lien quan den dau gach chan duoi NBN logo*/
+.logo h1 { /* Phần logo */
+    font-size: 24px;
+    font-weight: bold; /* In đậm */
+    color: #000; /* Màu chữ đen */
+    text-decoration: none; /* Xóa gạch chân */
+    cursor: pointer; /* Hiển thị con trỏ khi hover */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu */
+    width: auto; /*tránh bị cắt chữ*/
+    border: none; /*xoa vien bao quanh logo*/
+    outline: none; /*xoa vien xanh khi click vao logo*/
+
+}
+
+.logo h1:hover { /* Hiệu ứng hover cho logo */
+    color: #666;
+    color: rgba(0, 0, 0, 0.7); /* FIX: Thêm hiệu ứng hover mờ */
+}
+
+.search input { /* Phần ô tìm kiếm */
+    border: 1px solid #ddd; /*Viền của search*/
+    border-radius: 20px; /* Bo tròn viền */
+    transition: border-color 0.3s ease;
+    }
+
+.search input:focus { /* Hiệu ứng khi focus ( like click then it change border color ) vào ô tìm kiếm */
+    border-color: #000;
+    outline: none;
+}
+
+.cart span { /*span là phần giỏ hàng*/
+    cursor: pointer; /* Hiển thị con trỏ khi hover ( hiển thị con trõ I dạng chữ viết text*/
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
+
+.cart:hover span { /* Hiệu ứng hover cho giỏ hàng */
+    color: #666; /* khong thay doi voi mau ban dau*/
+}
+
+/*thanh cong cu*/
+/* Navigation - Phần menu điều hướng */
+.nav {
+    display:flex; /* Sử dụng flexbox để căn chỉnh menu */
+    justify-content: auto; /* Căn giữa menu */
+    align-items: auto; /* Căn giữa theo chiều dọc */
+    background-color:aliceblue;
+    border-bottom: 1px solid #eee; /* Viền dưới nhẹ */
+    padding: 10px 0; /* Padding trên dưới */
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: none; /* Ẩn menu trên mobile nếu cần */
+        padding: 15px 0;
+    }
+    .menu {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+
+    /*decor lại phần hover*/
+    .meunu:hover {
+        color: brown;
+    }
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.nav li {
+    margin: 0 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: #666;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+/* Main - Phần nội dung chính */
+.main {
+    display: flex;
+    min-height: 80vh;
+}
+
+/* Sidebar - Phần sidebar lọc sản phẩm (bên trái) */
+.sidebar {
+    width: 250px;
+    padding: 20px 0;
+    border-right: 1px solid #eee;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.filter-group ul {
+    list-style: none;
+}
+
+.filter-group li {
+    margin-bottom: 5px;
+}
+
+/* Product Grid - Phần lưới sản phẩm */
+.product-grid {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-grid h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards 0.2s;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    position: relative;
+    overflow: hidden;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: staggerFadeIn 0.6s ease forwards;
+            cursor: default; /* ✅ FIX: Card không nhấn như button, chỉ hiển thị */
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+        /* ✅ NOTE: Lặp lại animation-delay cho tất cả card nếu cần, nhưng để ngắn gọn, chỉ liệt kê vài cái đầu */
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-info {
+            padding: 15px;
+            text-align: center;
+            color: black;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .card-info {
+            transform: translateY(0);
+        }
+
+        .card-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .card-info p {
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* Total Products - Phần hiển thị tổng sản phẩm (cố định) */
+        #total-products {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            position: sticky; /* ✅ FIX: Làm phần tổng cố định khi scroll */
+            top: 0; /* Cố định ở đầu nếu cần, hoặc điều chỉnh */
+            z-index: 10;
+        }
+
+        /* Footer - Phần chân trang */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .footer li {
+            margin: 0 15px;
+        }
+
+        .footer a {
+            color: #fff; /* ✅ FIX: Màu trắng cho link footer */
+            text-decoration: none;
+        }
+
+        /* Animations - Phần animation chung */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes staggerFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries - Responsive Design */
+        /* ✅ FIX: Tách riêng media cho tablet (max-width: 1024px) và mobile (max-width: 768px) */
+        /* Tablet (max-width: 1024px) - Tối ưu cho tablet: Giảm cột grid, điều chỉnh width */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 cột cho tablet */
+            }
+
+            .header .container {
+                flex-wrap: wrap; /* Cho phép wrap nếu cần */
+            }
+
+            .search input {
+                width: 250px; /* Giảm width search */
+            }
+
+            .sidebar {
+                width: 200px; /* Giảm width sidebar */
+            }
+        }
+
+        /* Mobile (max-width: 768px) - Tối ưu cho mobile: Thay đổi bố cục hoàn toàn */
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column; /* Stack sidebar và grid vertically */
+            }
+
+            .sidebar {
+                width: 100%; /* Sidebar chiếm full width */
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                order: 1; /* Sidebar xuống dưới nếu cần, nhưng giữ nguyên */
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 cột cho mobile */
+            }
+
+            .header .container {
+                flex-direction: row; /* Giữ row nhưng điều chỉnh width */
+                justify-content: space-between;
+            }
+
+            .logo {
+                width: 10%; /* ✅ FIX: Logo chiếm 10% width bên trái */
+                text-align: left;
+            }
+
+            .logo h1 {
+                font-size: 20px; /* Giảm size logo */
+                width: auto;
+                padding: 8px 16px;
+                border: none;
+                display: block;
+                outline: none;
+            }
+
+            .search {
+                flex: 1; /* Search chiếm phần giữa */
+                margin: 0 10px;
+            }
+
+            .search input {
+                width: 100%; /* Full width search */
+                margin: 10px 0;
+            }
+
+            .cart {
+                width: 10%; /* ✅ FIX: Giỏ hàng chiếm 10% width bên phải */
+                text-align: right;
+            }
+
+            /* ✅ FIX: Thêm phần giỏ hàng bên trái (sidebar cart) - Giả sử thêm class .cart-sidebar */
+            .cart-sidebar {
+                display: block; /* Hiển thị trên mobile */
+                width: 100%; /* Chiếm full, hoặc điều chỉnh */
+                padding: 20px;
+                background: #f9f9f9;
+                border-bottom: 1px solid #eee;
+                order: 0; /* Đặt ở trên cùng nếu cần */
+            }
+
+            /* Ẩn cart-sidebar trên desktop */
+            @media (min-width: 769px) {
+                .cart-sidebar {
+                    display: none;
+                }
+            }
+
+            .nav ul {
+                flex-direction: column; /* Menu stack vertically trên mobile */
+                align-items: center;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+        }

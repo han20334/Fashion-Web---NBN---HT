@@ -1,0 +1,191 @@
+* { /* Áp dụng cho tất cả các phần tử */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif; /* Font chữ chính */
+}
+
+body { /* Toàn bộ trang */
+    height: 100vh; /* Chiều cao toàn bộ khung nhìn */
+    background-color: #f5f5f5; /* Màu nền sáng */
+    /* background-image: url('images/background.jpg'); /* Hình nền */
+    /*background-size: cover; /* Phủ đầy khung nhìn */
+    /*background-position: center; /* Căn giữa hình nền */
+    /*background-attachment: fixed; /* Cố định hình nền khi cuộn */
+}
+
+li{ /* Các mục trong danh sách */
+    list-style: none; /* Xóa dấu chấm đầu dòng */
+}
+
+a { /* Liên kết */
+    text-decoration: none; /* Xóa gạch chân */
+    color: black; /*inherit;  Kế thừa màu chữ */
+    font-size: 1em; /*1rem = 1 em= = 16px*/
+}
+
+header a, nav a{ /* Màu chữ trong header và nav */
+    color: black;
+}
+
+a:hover{ /* Hiệu ứng khi hover vào link*/
+    color: rgba(191, 182, 182, 0.3); /*  Thêm hiệu ứng hover mờ */
+}
+
+/* Header - Phần đầu trang với logo, search, cart */
+header { /*logo, search, cart*/
+    position: relative; /*Thêm position relative để chứa phần tử con */
+    padding: 0 2em; /* Padding trái phải, 2 em = 31px*/
+    background-color: #fff; /*thêm nền trắng để rõ ràng */
+    border-bottom: 1px solid #888888; /*thêm viền dưới */
+}
+
+/*thanh dieu huong*/
+.tdh {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1240px; /*be hon 1240px*/
+    margin: 0 auto; /*can giua ngang*/
+    padding: 10px 0; /* Padding trên dưới */;
+}
+
+.menu_dh, .logo, .cart, .search {
+    flex-shrink: 0; /* Ngăn không cho các phần tử co lại */
+}
+
+.logo a{
+    font-weight: bold; /* In đậm */
+    font-size: 1.5em; /* Kích thước chữ lớn hơn */
+}
+
+.search {
+    flex: 1; /*flex-grow: 1;  Chiếm không gian còn lại */
+    max-width: 500px; /* Giới hạn chiều rộng tối đa */
+    margin: 0 20px; /* Khoảng cách trái phải */
+}
+
+.search input { /* Phần ô tìm kiếm */
+    width: 100%; /* Chiếm toàn bộ chiều rộng của phần search */
+    padding: 10px 15px;
+    border: 1px solid #ddd; /*Viền của search*/
+    border-radius: 25px; /* Bo tròn viền */
+    transition: border-color 0.3s ease;
+    font-size: 1em; /* Kích thước chữ */
+}
+
+.search input:focus .seach:hover {
+    border-color: #888; /* Thay đổi màu viền khi focus */
+    outline: none; /* Xóa viền xanh mặc định */
+}
+
+/*thanh cong cu*/
+nav{
+    background-color: #fff;
+    border-bottom: 1px solid #eee; /* Viền dưới nhẹ */
+    width: 100%;
+    height: 50px;
+    max-width: 1240px; /*be hon 1240px*/
+    margin: 0 auto; /*can giua ngang*/
+    display: flex; /* Sử dụng flexbox để căn chỉnh menu */
+    justify-content: space-between; /* Căn giữa menu */
+
+}
+
+.tcc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1240px; /*be hon 1240px*/
+    margin: 0 auto; /*can giua ngang*/
+    padding: 0 2em; /* Padding trên dưới */;
+    height: 50px;
+}
+
+.links{ /* van nam trong thanh cong cu */
+    display: flex;
+    gap: 2em; /* Khoảng cách giữa các liên kết */
+    align-items: center;
+}
+
+.link li a{
+    text-transform: uppercase; /* Chữ in hoa */
+    font-size: 0.9em; /* Kích thước chữ */
+    letter-spacing: 3px; /* Khoảng cách giữa các chữ */
+    position: relative; /* Để tạo hiệu ứng gạch chân */
+}
+
+.links li a::after{ /* Hiệu ứng gạch chân khi hover */
+    content: ''; /* Nội dung rỗng */
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.links li a:hover::after {
+    width: 100%; /* Mở rộng gạch chân khi hover */
+}
+
+.action_btn:hover { /*get started button hover*/
+    background-color: #333; /* Màu nền khi hover */
+}
+
+.tog_btn {
+    display: none; /* Ẩn trên desktop */
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+/*Mobile và Tablet*/
+/* === SỬA TRONG @media (max-width: 768px) === */
+@media (max-width: 768px) {
+    .tdh {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .search {
+        margin: 10px 0;
+        max-width: 100%;
+    }
+
+    .menu_dh, .cart {
+        position: absolute;
+        top: 15px;
+    }
+
+    .menu_dh { left: 20px; }
+    .cart { right: 20px; }
+
+    .logo { margin: 10px 0; }
+
+    .tcc {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .links {
+        flex-direction: column; /* Dọc trên mobile */
+        align-items: center;
+        width: 100%;
+        display: none; /* Ẩn mặc định */
+    }
+
+    .links.active { /* ← THÊM: để JS bật menu */
+        display: flex;
+    }
+
+    .tog_btn {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+
+    .action_btn {
+        margin-top: 10px;
+    }
+}
